@@ -4,44 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%20fill%3D%22%235EEAD4%22%3E%3Crect%20x%3D%229.7%22%20y%3D%2223.8%22%20width%3D%2219.5%22%20height%3D%2259.2%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%2240.1%22%20y%3D%220.0%22%20width%3D%2219.5%22%20height%3D%22140.1%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%2271.1%22%20y%3D%2217.3%22%20width%3D%2219.5%22%20height%3D%22197.1%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22102.2%22%20y%3D%2247.7%22%20width%3D%2219.5%22%20height%3D%22219.5%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22133.2%22%20y%3D%2288.8%22%20width%3D%2218.8%22%20height%3D%22236.9%22%20rx%3D%229.4%22/%3E%3Crect%20x%3D%22163.6%22%20y%3D%22145.2%22%20width%3D%2219.5%22%20height%3D%22238.3%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22194.6%22%20y%3D%22199.3%22%20width%3D%2219.5%22%20height%3D%22231.8%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22225.7%22%20y%3D%22255.6%22%20width%3D%2219.5%22%20height%3D%22214.5%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22250.2%22%20y%3D%22318.5%22%20width%3D%2211.6%22%20height%3D%22193.5%22%20rx%3D%225.8%22/%3E%3Crect%20x%3D%22267.6%22%20y%3D%22255.6%22%20width%3D%2219.5%22%20height%3D%22214.5%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22298.6%22%20y%3D%22199.3%22%20width%3D%2219.5%22%20height%3D%22231.8%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22328.9%22%20y%3D%22145.2%22%20width%3D%2219.5%22%20height%3D%22238.3%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22360.0%22%20y%3D%2288.8%22%20width%3D%2219.5%22%20height%3D%22236.9%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22391.0%22%20y%3D%2247.7%22%20width%3D%2219.5%22%20height%3D%22219.5%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22421.4%22%20y%3D%2217.3%22%20width%3D%2219.5%22%20height%3D%22197.1%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22452.4%22%20y%3D%220.0%22%20width%3D%2219.5%22%20height%3D%22140.1%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22482.8%22%20y%3D%2223.8%22%20width%3D%2219.5%22%20height%3D%2258.5%22%20rx%3D%229.7%22/%3E%3C/svg%3E">
-<title>VerseFlow — Live Scripture Detection for Church Media Teams</title>
-<meta name="description" content="VerseFlow listens to the sermon, detects Bible references and quotes in real time, and puts the verse on your screen — display window, OBS, vMix or any NDI receiver.">
+<title>VerseFlow — Scripture & Lyrics, Live and Automatic, for Church Media Teams</title>
+<meta name="description" content="VerseFlow listens to the service in real time — detecting Bible references and quotes as the pastor preaches, and identifying hymns and worship songs as the congregation sings — and puts the words on your screen through its display window, OBS, vMix or any NDI receiver.">
 <style>
   :root {
     --bg: #0a0a0c; --surface: #101014; --elevated: #17171c;
     --border: #232329; --border-strong: #35353e;
-    --mint: #5eead4; --amber: #f5b944; --red: #f0524f;
+    --mint: #5eead4; --amber: #f5b944; --red: #f0524f; --purple: #b98af5;
     --text: #edeef2; --text2: #9ca0ac; --muted: #5c6070;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg); color: var(--text);
     font-family: "SF Mono", Menlo, Consolas, "JetBrains Mono", monospace;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  .sans { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   header {
-    border-bottom: 1px solid var(--border); padding: 18px 0;
-    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--border); padding: 16px 0;
+    position: sticky; top: 0; background: rgba(10,10,12,.85);
+    backdrop-filter: blur(10px); z-index: 10;
   }
-  header .wrap { display: flex; align-items: center; gap: 12px; width: 100%; }
-  .logo-mark { display: block; }
+  header .wrap { display: flex; align-items: center; gap: 12px; }
   .brand { letter-spacing: 3px; font-weight: 800; font-size: 14px; }
   .pill {
     margin-left: auto; font-size: 10px; letter-spacing: 2px; color: var(--mint);
     border: 1px solid rgba(94,234,212,.4); border-radius: 20px; padding: 4px 12px;
   }
-  .hero { padding: 88px 0 56px; text-align: center; }
-  .hero .tag {
-    color: var(--mint); font-size: 11px; letter-spacing: 4px; margin-bottom: 22px;
-  }
+  .nav-dl { color: var(--mint); text-decoration: none; font-size: 11px; letter-spacing: 1.5px; font-weight: 700; }
+  @media (max-width: 620px) { .pill { display: none; } }
+
+  .hero { padding: 84px 0 48px; text-align: center; }
+  .hero .tag { color: var(--mint); font-size: 11px; letter-spacing: 4px; margin-bottom: 22px; }
   h1 {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: clamp(30px, 5.5vw, 52px); font-weight: 700; letter-spacing: -1px;
-    line-height: 1.15; margin-bottom: 18px;
+    font-size: clamp(30px, 5.4vw, 54px); font-weight: 700; letter-spacing: -1px;
+    line-height: 1.12; margin-bottom: 18px;
   }
   h1 .mint { color: var(--mint); }
-  .sub { color: var(--text2); max-width: 620px; margin: 0 auto 40px; font-size: 14px; }
+  h1 .purple { color: var(--purple); }
+  .sub { color: var(--text2); max-width: 640px; margin: 0 auto 38px; font-size: 14px; }
   .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
@@ -50,72 +55,122 @@
   }
   .btn:hover { transform: translateY(-1px); }
   .btn-primary { background: var(--mint); color: #000; }
-  .btn-mac {
-    border: 1px solid var(--border-strong); color: var(--text);
-  }
+  .btn-mac { border: 1px solid var(--border-strong); color: var(--text); }
   .btn small { display: block; font-weight: 500; letter-spacing: .5px; opacity: .75; }
-  .note { margin-top: 18px; color: var(--muted); font-size: 10.5px; letter-spacing: 1px; }
+  .note { margin-top: 16px; color: var(--muted); font-size: 10.5px; letter-spacing: 1px; }
+
+  /* Broadcast monitor mockups */
   .monitor {
-    margin: 64px auto 0; max-width: 760px; aspect-ratio: 16/9; background: #060607;
+    margin: 0 auto; aspect-ratio: 16/9; background: #060607;
     border: 1px solid var(--border-strong); border-radius: 10px; position: relative;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 40px; overflow: hidden;
   }
+  .monitor.big { margin-top: 60px; max-width: 780px; }
   .monitor .chrome-l { position: absolute; top: 14px; left: 18px; color: #3a3e48; font-size: 9px; letter-spacing: 3px; }
   .monitor .chrome-r { position: absolute; top: 14px; right: 18px; color: var(--red); font-size: 9px; letter-spacing: 3px; font-weight: 700; }
   .monitor .chrome-r::before { content: "●"; margin-right: 6px; }
-  .monitor .ref { color: var(--mint); font-size: clamp(9px, 1.4vw, 13px); letter-spacing: 5px; margin-bottom: 20px; }
-  .monitor .ref::before, .monitor .ref::after { content: "———"; color: rgba(94,234,212,.4); margin: 0 14px; }
+  .monitor .ref { color: var(--mint); font-size: clamp(9px, 1.4vw, 13px); letter-spacing: 5px; margin-bottom: 18px; }
+  .monitor.song .ref { color: var(--purple); }
+  .monitor .ref::before, .monitor .ref::after { content: "———"; opacity: .4; margin: 0 14px; }
   .monitor .verse {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: clamp(16px, 3.2vw, 30px); font-weight: 600; text-align: center;
-    line-height: 1.35; letter-spacing: -0.3px; max-width: 620px;
+    font-size: clamp(15px, 3vw, 28px); font-weight: 600; text-align: center;
+    line-height: 1.35; letter-spacing: -0.3px; max-width: 640px;
   }
-  .monitor .ver { color: var(--muted); font-size: clamp(8px, 1.1vw, 11px); letter-spacing: 4px; margin-top: 22px; }
+  .monitor .ver { color: var(--muted); font-size: clamp(8px, 1.1vw, 11px); letter-spacing: 4px; margin-top: 20px; }
+
+  /* Two-mode split */
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 76px 0 24px; }
+  @media (max-width: 760px) { .modes { grid-template-columns: 1fr; } }
+  .mode {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 26px 24px;
+  }
+  .mode .kicker { font-size: 10px; letter-spacing: 3px; margin-bottom: 14px; font-weight: 800; }
+  .mode.scripture .kicker { color: var(--mint); }
+  .mode.lyrics .kicker { color: var(--purple); }
+  .mode h2 { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 22px; letter-spacing: -0.5px; margin-bottom: 10px; font-weight: 700; }
+  .mode > p { color: var(--text2); font-size: 12.5px; margin-bottom: 18px; }
+  .mode .mini { aspect-ratio: 16/9; margin-bottom: 18px; }
+  .mode ul { list-style: none; }
+  .mode li { color: var(--text2); font-size: 12px; padding: 5px 0; padding-left: 20px; position: relative; }
+  .mode li::before { content: "▸"; position: absolute; left: 0; }
+  .mode.scripture li::before { color: var(--mint); }
+  .mode.lyrics li::before { color: var(--purple); }
+
+  .section-head { text-align: center; padding: 68px 0 8px; }
+  .section-head .k { color: var(--mint); font-size: 11px; letter-spacing: 4px; }
+  .section-head h2 { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: clamp(24px, 4vw, 34px); font-weight: 700; letter-spacing: -0.5px; margin-top: 12px; }
+
   .features {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 14px; padding: 72px 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px; padding: 34px 0 0;
   }
-  .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
-    padding: 22px;
-  }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px; }
   .card h3 { font-size: 11px; letter-spacing: 2px; margin-bottom: 10px; }
   .card h3::before { content: "● "; }
   .card.mint h3 { color: var(--mint); }
   .card.amber h3 { color: var(--amber); }
   .card.red h3 { color: var(--red); }
+  .card.purple h3 { color: var(--purple); }
   .card p { color: var(--text2); font-size: 12px; }
+
+  .flow { padding: 72px 0 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 760px) { .flow { grid-template-columns: 1fr 1fr; } }
+  .step { text-align: center; padding: 18px 12px; }
+  .step .n { color: var(--mint); font-size: 11px; letter-spacing: 2px; border: 1px solid rgba(94,234,212,.35);
+    border-radius: 20px; padding: 3px 11px; display: inline-block; margin-bottom: 12px; }
+  .step h4 { font-size: 12px; letter-spacing: 1px; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 11px; }
+
+  .versions { border-top: 1px solid var(--border); margin-top: 60px; padding: 44px 0; text-align: center; }
+  .versions h2 { font-size: 11px; letter-spacing: 3px; color: var(--text2); margin-bottom: 18px; }
+  .chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--border-strong); border-radius: 6px; padding: 8px 14px; font-size: 11px; letter-spacing: 1px; color: var(--text2); }
+  .chip.on { color: var(--mint); border-color: rgba(94,234,212,.4); }
+  .chip.soon { color: var(--muted); }
+  .versions .fine { color: var(--muted); font-size: 10.5px; letter-spacing: .5px; margin-top: 16px; }
+
   .reqs { border-top: 1px solid var(--border); padding: 44px 0; }
   .reqs h2 { font-size: 11px; letter-spacing: 3px; color: var(--text2); margin-bottom: 16px; }
   .reqs ul { list-style: none; color: var(--muted); font-size: 12px; }
   .reqs li { padding: 4px 0; }
   .reqs li::before { content: ">"; color: var(--mint); margin-right: 10px; }
-  footer {
-    border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted);
-    font-size: 10px; letter-spacing: 1.5px; text-align: center;
-  }
+
+  .secure { border-top: 1px solid var(--border); padding: 40px 0; display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+  .secure .lock { color: var(--mint); font-size: 22px; }
+  .secure div p { color: var(--text2); font-size: 12px; max-width: 760px; }
+  .secure div .h { font-size: 11px; letter-spacing: 2px; color: var(--mint); margin-bottom: 8px; }
+
+  footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted);
+    font-size: 10px; letter-spacing: 1.5px; text-align: center; }
+  footer .v { color: var(--text2); }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <svg class="logo-mark" width="26" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#5EEAD4"><rect x="9.7" y="23.8" width="19.5" height="59.2" rx="9.7"/><rect x="40.1" y="0.0" width="19.5" height="140.1" rx="9.7"/><rect x="71.1" y="17.3" width="19.5" height="197.1" rx="9.7"/><rect x="102.2" y="47.7" width="19.5" height="219.5" rx="9.7"/><rect x="133.2" y="88.8" width="18.8" height="236.9" rx="9.4"/><rect x="163.6" y="145.2" width="19.5" height="238.3" rx="9.7"/><rect x="194.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="225.7" y="255.6" width="19.5" height="214.5" rx="9.7"/><rect x="250.2" y="318.5" width="11.6" height="193.5" rx="5.8"/><rect x="267.6" y="255.6" width="19.5" height="214.5" rx="9.7"/><rect x="298.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="328.9" y="145.2" width="19.5" height="238.3" rx="9.7"/><rect x="360.0" y="88.8" width="19.5" height="236.9" rx="9.7"/><rect x="391.0" y="47.7" width="19.5" height="219.5" rx="9.7"/><rect x="421.4" y="17.3" width="19.5" height="197.1" rx="9.7"/><rect x="452.4" y="0.0" width="19.5" height="140.1" rx="9.7"/><rect x="482.8" y="23.8" width="19.5" height="58.5" rx="9.7"/></svg>
+    <svg width="26" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#5EEAD4"><rect x="9.7" y="23.8" width="19.5" height="59.2" rx="9.7"/><rect x="40.1" y="0.0" width="19.5" height="140.1" rx="9.7"/><rect x="71.1" y="17.3" width="19.5" height="197.1" rx="9.7"/><rect x="102.2" y="47.7" width="19.5" height="219.5" rx="9.7"/><rect x="133.2" y="88.8" width="18.8" height="236.9" rx="9.4"/><rect x="163.6" y="145.2" width="19.5" height="238.3" rx="9.7"/><rect x="194.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="225.7" y="255.6" width="19.5" height="214.5" rx="9.7"/><rect x="250.2" y="318.5" width="11.6" height="193.5" rx="5.8"/><rect x="267.6" y="255.6" width="19.5" height="214.5" rx="9.7"/><rect x="298.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="328.9" y="145.2" width="19.5" height="238.3" rx="9.7"/><rect x="360.0" y="88.8" width="19.5" height="236.9" rx="9.7"/><rect x="391.0" y="47.7" width="19.5" height="219.5" rx="9.7"/><rect x="421.4" y="17.3" width="19.5" height="197.1" rx="9.7"/><rect x="452.4" y="0.0" width="19.5" height="140.1" rx="9.7"/><rect x="482.8" y="23.8" width="19.5" height="58.5" rx="9.7"/></svg>
     <div class="brand">VERSEFLOW</div>
-    <div class="pill">BROADCAST-GRADE SCRIPTURE DETECTION</div>
+    <div class="pill">SCRIPTURE &amp; LYRICS · LIVE</div>
+    <a class="nav-dl" href="#download">⭳ DOWNLOAD</a>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
     <div class="tag">LISTEN · DETECT · DISPLAY</div>
-    <h1>The sermon speaks.<br>The verse appears — <span class="mint">automatically</span>.</h1>
+    <h1>Your screen keeps up<br>with <span class="mint">the sermon</span> and <span class="purple">the song</span>.</h1>
     <p class="sub">
-      VerseFlow listens to the preacher in real time, detects Bible references and
-      even unspoken quotes, and puts the right verse on your screen — through its own
-      display window or straight into OBS, vMix and ProPresenter over NDI.
+      VerseFlow listens to the whole service. As the pastor preaches it detects Bible
+      references and quotes; as the congregation sings it recognises the hymn or worship
+      song — and puts the words on your screen automatically, through its own display
+      window or straight into OBS, vMix and ProPresenter over NDI.
     </p>
-    <div class="buttons">
+    <div class="buttons" id="download">
       <a class="btn btn-primary" href="https://github.com/STEPHANAS-SOFT/verseflow-releases/releases/latest/download/VerseFlow-Setup.exe">
         ⭳&nbsp; DOWNLOAD FOR WINDOWS <small>Windows 10 / 11 · 64-bit · free</small>
       </a>
@@ -124,10 +179,10 @@
       </a>
     </div>
     <div class="note">ALWAYS THE LATEST VERSION · THE APP UPDATES ITSELF AFTERWARDS</div>
-    <div class="note">MACOS FIRST LAUNCH: RIGHT-CLICK THE APP → OPEN (UNSIGNED BUILD)</div>
+    <div class="note">MACOS FIRST LAUNCH: RIGHT-CLICK THE APP → OPEN</div>
 
-    <div class="monitor">
-      <div class="chrome-l">VERSEFLOW · 1920×1080 OUTPUT</div>
+    <div class="monitor big">
+      <div class="chrome-l">VERSEFLOW</div>
       <div class="chrome-r">ON AIR</div>
       <div class="ref">JOHN 3 : 16</div>
       <div class="verse">For God so loved the world, that he gave his only begotten Son,
@@ -136,50 +191,131 @@
     </div>
   </section>
 
-  <section class="features">
-    <div class="card mint">
-      <h3>HEARS EVERY REFERENCE</h3>
-      <p>"John three sixteen", "the twenty-third Psalm", "First Corinthians thirteen four" —
-         spoken naturally, validated against the real Bible so the wrong verse never goes up.</p>
+  <!-- TWO MODES -->
+  <section class="modes">
+    <div class="mode scripture">
+      <div class="kicker">SCRIPTURE MODE</div>
+      <h2 class="sans">Every verse, the moment it's preached</h2>
+      <p>Spoken references, unspoken quotes, and voice commands — heard live and checked
+         against the real Bible so the wrong verse never goes up.</p>
+      <div class="monitor mini">
+        <div class="ref">PSALM 91 : 7</div>
+        <div class="verse" style="font-size:clamp(13px,2.4vw,20px)">A thousand shall fall at thy side,
+          and ten thousand at thy right hand; but it shall not come nigh thee.</div>
+      </div>
+      <ul>
+        <li>Hears "John three sixteen", "the twenty-third Psalm", "First Corinthians thirteen"</li>
+        <li>Catches quotes with no citation — by the words alone</li>
+        <li>Understands paraphrase, personalised wording ("my" for "thy") and numbers</li>
+        <li>An AI second pass confirms the tricky quotes a search would miss</li>
+        <li>Voice-driven: "next verse", "go back", "verse five", "switch to KJV"</li>
+      </ul>
     </div>
-    <div class="card mint">
-      <h3>CATCHES UNSPOKEN QUOTES</h3>
-      <p>The preacher quotes "for God so loved the world…" without citing it?
-         VerseFlow finds the verse by its words alone.</p>
-    </div>
-    <div class="card red">
-      <h3>VOICE-DRIVEN LIVE</h3>
-      <p>"Next verse." "Go back." "Verse five." With Auto-Live armed, the pastor drives
-         the projector — hands-free.</p>
-    </div>
-    <div class="card amber">
-      <h3>NDI + DISPLAY OUTPUT</h3>
-      <p>A real NDI source with true-alpha overlay mode for OBS / vMix lower thirds,
-         plus a fullscreen display window for direct projection.</p>
-    </div>
-    <div class="card amber">
-      <h3>OFFLINE BIBLE LIBRARY</h3>
-      <p>KJV, Berean Standard, ASV and Young's Literal bundled — detection, search and
-         chapter browsing work with no internet at all.</p>
-    </div>
-    <div class="card mint">
-      <h3>BUILT FOR THE BOOTH</h3>
-      <p>Preview / program monitors, confidence-scored detections, one-key TAKE,
-         and a connection that fights to stay on air through unstable networks.</p>
+    <div class="mode lyrics">
+      <div class="kicker">LYRICS MODE</div>
+      <h2 class="sans">Hymns and worship songs, identified as they're sung</h2>
+      <p>Switch to Lyrics mode and VerseFlow listens through the music, recognises the
+         song, and lays it out in slides ready to click straight to the screen.</p>
+      <div class="monitor song mini">
+        <div class="ref">AMAZING GRACE</div>
+        <div class="verse" style="font-size:clamp(13px,2.4vw,20px)">Amazing grace, how sweet the sound,<br>that saved a wretch like me.</div>
+      </div>
+      <ul>
+        <li>On-device vocal isolation strips the instruments before listening</li>
+        <li>Detects any song already in your library — instantly, offline</li>
+        <li>Identifies unknown songs by AI from any verse, then arranges them</li>
+        <li>A studied second pass confirms the exact song with a certainty score</li>
+        <li>Smart search: type a title, an artist, or a half-remembered line</li>
+      </ul>
     </div>
   </section>
 
+  <!-- CAPABILITIES -->
+  <div class="section-head">
+    <div class="k">IN THE BOOTH</div>
+    <h2 class="sans">Built for whoever runs the screen</h2>
+  </div>
+  <section class="features">
+    <div class="card amber">
+      <h3>NDI + DISPLAY OUTPUT</h3>
+      <p>A real NDI source with true-alpha overlay for OBS / vMix lower-thirds, plus a
+         fullscreen display window you can drag straight to the projector.</p>
+    </div>
+    <div class="card red">
+      <h3>AUTO-LIVE, HANDS-FREE</h3>
+      <p>Arm Auto-Live and detections go to screen on their own — or keep manual control
+         with preview / program monitors and one-key TAKE. Mentions project; quotes wait
+         for your click.</p>
+    </div>
+    <div class="card mint">
+      <h3>ULTRA-LOW LATENCY</h3>
+      <p>Premium streaming transcription puts a spoken verse on screen in well under a
+         second — with a fight-to-stay-on-air connection that survives shaky networks.</p>
+    </div>
+    <div class="card purple">
+      <h3>YOUR SONG LIBRARY</h3>
+      <p>Every song you import is saved, arranged into verse / chorus slides, and
+         recognised instantly next time — the library gets smarter every service.</p>
+    </div>
+    <div class="card mint">
+      <h3>OFFLINE BIBLE LIBRARY</h3>
+      <p>Five translations bundled — detection, search and chapter browsing work with no
+         internet at all. An offline transcription engine is built in too.</p>
+    </div>
+    <div class="card amber">
+      <h3>CUSTOM OUTPUT</h3>
+      <p>Your fonts sizes, text and reference colours, background or transparent overlay,
+         and a named NDI source — tuned to match your stream.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="section-head"><div class="k">HOW IT WORKS</div><h2 class="sans">Plug in a microphone. That's the setup.</h2></div>
+  <section class="flow">
+    <div class="step"><div class="n">01</div><h4>IT LISTENS</h4><p>Point it at the room mic or a vocal feed from your mixer.</p></div>
+    <div class="step"><div class="n">02</div><h4>IT UNDERSTANDS</h4><p>Verses and songs are recognised live and verified before display.</p></div>
+    <div class="step"><div class="n">03</div><h4>YOU DECIDE</h4><p>Take it to screen with a click — or let Auto-Live do it for you.</p></div>
+    <div class="step"><div class="n">04</div><h4>IT GOES OUT</h4><p>Display window, NDI to OBS / vMix, or a second projector output.</p></div>
+  </section>
+
+  <!-- VERSIONS -->
+  <section class="versions">
+    <h2>BIBLE TRANSLATIONS</h2>
+    <div class="chips">
+      <span class="chip on">KJV</span>
+      <span class="chip on">WORLD ENGLISH (WEB)</span>
+      <span class="chip on">BEREAN STANDARD</span>
+      <span class="chip on">AMERICAN STANDARD</span>
+      <span class="chip on">YOUNG'S LITERAL</span>
+      <span class="chip soon">NKJV · NLT · AMP — coming</span>
+    </div>
+    <div class="fine">Bundled versions work fully offline. Switch by voice or a number key, live.</div>
+  </section>
+
+  <!-- SECURE -->
+  <section class="secure">
+    <div class="lock">🔒</div>
+    <div>
+      <div class="h">PRIVATE &amp; SECURE BY DESIGN</div>
+      <p>Your audio is transcribed and discarded — never stored. Cloud features run over
+         an encrypted, account-verified connection with no keys or endpoints exposed in the
+         app. Offline mode keeps everything on your machine. Sign in once; it just works.</p>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
   <section class="reqs">
     <h2>REQUIREMENTS</h2>
     <ul>
-      <li>Windows 10 or 11 (64-bit) or macOS 11+ — no other software needed; everything is bundled</li>
-      <li>Cloud transcription (lowest latency): free VerseFlow account, created inside the app</li>
-      <li>Offline transcription: built-in Whisper — one-time model download, then fully offline</li>
-      <li>For OBS: the free DistroAV (obs-ndi) plugin on the receiving machine</li>
+      <li>Windows 10 or 11 (64-bit) or macOS 11+ — everything is bundled, no other software needed</li>
+      <li>A microphone or an audio feed from your sound desk (a vocal send works best for singing)</li>
+      <li>Cloud features (lowest latency, AI song &amp; quote detection): a free VerseFlow account, created in the app</li>
+      <li>Fully-offline use: built-in engines — a one-time model download, then no internet required</li>
+      <li>For OBS output: the free DistroAV (obs-ndi) plugin on the receiving machine</li>
     </ul>
   </section>
 </main>
 
-<footer>VERSEFLOW · SCRIPTURE DETECTION FOR CHURCH MEDIA TEAMS</footer>
+<footer>VERSEFLOW <span class="v">v1.2.0</span> · SCRIPTURE &amp; LYRICS FOR CHURCH MEDIA TEAMS · THE APP UPDATES ITSELF</footer>
 </body>
 </html>
