@@ -196,7 +196,26 @@
   // Auto-detect: African timezone -> discounted Africa pricing, else standard.
   var tz = "";
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch(e){}
-  setRegion(tz.indexOf("Africa/") === 0 ? 'africa' : 'intl');
+  var REGION = (tz.indexOf("Africa/") === 0) ? 'africa' : 'intl';
+  setRegion(REGION);
+
+  // Live prices come from the backend (which reads the Paystack plan + Lemon
+  // Squeezy variant), so changing the price in those dashboards updates here
+  // automatically. Falls back to the values above if the fetch fails.
+  fetch("https://vmi2848672.contaboserver.net/verseflow/pricing")
+    .then(function(r){ return r.json(); })
+    .then(function(p){
+      if (p.africa && p.africa.display) {
+        COPY.africa.amt = p.africa.display;
+        COPY.africa.slash = p.africaCompareDisplay || "";
+        var usd = p.africa.usdApprox;
+        COPY.africa.save = "REGIONAL PRICING · ~$" + usd + " · SAVE 25%";
+        COPY.africa.note = "Local currency shown (₦ ≈ $" + usd + ") · billed monthly · cancel anytime";
+      }
+      if (p.intl && p.intl.display) { COPY.intl.amt = p.intl.display; }
+      setRegion(REGION);
+    })
+    .catch(function(){ /* keep fallback prices */ });
 </script>
 </body>
 </html>
