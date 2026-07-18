@@ -59,6 +59,11 @@
   .btn-mac { border: 1px solid var(--border-strong); color: var(--text); }
   .btn small { display: block; font-weight: 500; letter-spacing: .5px; opacity: .75; }
   .note { margin-top: 16px; color: var(--muted); font-size: 10.5px; letter-spacing: 1px; }
+  .note b { color: var(--text2); }
+  .maccmd { display: inline-block; margin-top: 8px; padding: 8px 14px; background: var(--elevated);
+    border: 1px solid var(--border-strong); border-radius: 7px; color: var(--mint);
+    font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; cursor: pointer; user-select: all; }
+  .maccmd:hover { border-color: var(--mint); }
 
   /* Broadcast monitor mockups */
   .monitor {
@@ -217,7 +222,8 @@
       </a>
     </div>
     <div class="note">ALWAYS THE LATEST VERSION · THE APP UPDATES ITSELF AFTERWARDS</div>
-    <div class="note">MACOS FIRST LAUNCH: RIGHT-CLICK THE APP → OPEN</div>
+    <div class="note">MACOS: IF IT SAYS “DAMAGED”, OPEN <b>TERMINAL</b> AND RUN THIS ONCE, THEN OPEN THE APP:</div>
+    <div class="maccmd" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('xattr -cr /Applications/VerseFlow.app')" title="Click to copy">xattr -cr /Applications/VerseFlow.app</div>
 
     <div class="demo" aria-hidden="true">
       <div class="demo-console">
