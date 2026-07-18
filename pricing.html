@@ -54,6 +54,8 @@
   .cta:hover{transform:translateY(-1px);}
   .cta.primary{background:var(--mint);color:#000;}
   .cta.ghost{border:1px solid var(--border-strong);color:var(--text);}
+  .inapp-note{color:var(--text2);font-size:11px;line-height:1.5;margin-top:12px;text-align:center;}
+  .inapp-note strong{color:var(--mint);font-weight:700;}
   ul.feat{list-style:none;margin-top:22px;}
   ul.feat li{color:var(--text2);font-size:12px;padding:6px 0 6px 22px;position:relative;}
   ul.feat li::before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:700;}
@@ -123,7 +125,10 @@
       <span class="save" id="save">REGIONAL PRICING · SAVE 25%</span>
       <p class="desc">Everything in Free, plus the cloud engine and full AI detection —
         the fastest, smartest VerseFlow.</p>
-      <a class="cta primary" id="proCta" href="#">▲ UPGRADE TO PRO</a>
+      <a class="cta primary" id="proCta" href="./#download">▲ GET PRO — IN THE APP</a>
+      <p class="inapp-note">Download free, create an account, then
+        <strong>Settings → Account → Upgrade to Pro</strong>. Pay in your local
+        currency — Pro unlocks instantly on that device.</p>
       <ul class="feat">
         <li><strong>Everything in Free</strong></li>
         <li>Ultra-low-latency cloud transcription</li>
@@ -139,6 +144,8 @@
   <section class="faq">
     <h2>QUESTIONS</h2>
     <div class="qa">
+      <div class="q">How do I subscribe to Pro?</div>
+      <div class="a">Inside the app. Download VerseFlow (free), create an account, then open Settings → Account → Upgrade to Pro. You'll pay via Paystack (Africa) or Lemon Squeezy (international) right there, and Pro unlocks on that device the moment your payment clears. Subscribing in the app keeps your payment tied to your account automatically.</div>
       <div class="q">Is the free version really free?</div>
       <div class="a">Yes — offline mode is free forever, no account needed. It's the full app minus the cloud/AI features that cost us to run.</div>
       <div class="q">Why is the price different by region?</div>
@@ -154,12 +161,9 @@
 <footer>VERSEFLOW v1.2.0 · FREE OFFLINE · PRO $15 IN AFRICA · $20 INTERNATIONAL · PER MONTH</footer>
 
 <script>
-  // NOTE: checkout links are placeholders until the Paystack plan + Lemon
-  // Squeezy variant are created — they get dropped in then.
-  var CHECKOUT = {
-    africa: "#paystack-checkout-pending",
-    intl: "#lemonsqueezy-checkout-pending"
-  };
+  // Subscription happens inside the app (Settings → Account → Upgrade), where
+  // the payment is tied to the signed-in account and Pro unlocks instantly.
+  // The page just shows regional pricing and sends people to the download.
   var COPY = {
     africa: { slash: "₦32,000", amt: "₦24,000", per: "/ month",
       save: "REGIONAL PRICING · ~$15 · SAVE 25%", free: "₦0",
@@ -176,7 +180,6 @@
     document.getElementById('save').textContent = c.save;
     document.getElementById('curNote').textContent = c.note;
     document.querySelector('.plan.free .free-amt').textContent = c.free;
-    document.getElementById('proCta').setAttribute('href', CHECKOUT[r]);
     document.getElementById('btn-africa').classList.toggle('on', r==='africa');
     document.getElementById('btn-intl').classList.toggle('on', r==='intl');
   }
