@@ -148,6 +148,40 @@
   footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted);
     font-size: 10px; letter-spacing: 1.5px; text-align: center; }
   footer .v { color: var(--text2); }
+  /* Animated live-style demo */
+  .demo { margin-top: 52px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 16px; text-align: left; }
+  @media (max-width: 760px){ .demo { grid-template-columns: 1fr; } }
+  .demo-console, .demo-screen { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .demo-console { display: flex; flex-direction: column; min-height: 215px; }
+  .demo-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .demo-live { display: inline-flex; align-items: center; gap: 8px; color: var(--red); font-size: 9.5px; letter-spacing: 2.5px; font-weight: 700; }
+  .demo-mode { color: var(--muted); font-size: 9px; letter-spacing: 2.5px; }
+  .wave { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+  .wave i { width: 2.5px; height: 4px; background: var(--red); border-radius: 2px; animation: wv 1s ease-in-out infinite; }
+  .wave i:nth-child(2){ animation-delay: .15s } .wave i:nth-child(3){ animation-delay: .3s }
+  .wave i:nth-child(4){ animation-delay: .45s } .wave i:nth-child(5){ animation-delay: .6s }
+  @keyframes wv { 0%,100%{ height: 4px } 50%{ height: 14px } }
+  .demo-transcript { color: var(--text2); font-size: 12.5px; line-height: 1.7; min-height: 66px; }
+  .demo-transcript::after { content: "▋"; color: var(--mint); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50%{ opacity: 0 } }
+  .demo-detect { margin-top: auto; min-height: 44px; }
+  .demo-card { display: flex; align-items: center; gap: 10px; background: var(--elevated); border: 1px solid var(--mint); border-radius: 8px; padding: 9px 12px; opacity: 0; transform: translateY(8px); transition: .35s ease; }
+  .demo-card.show { opacity: 1; transform: none; }
+  .demo-card.song { border-color: var(--purple); }
+  .demo-card .t { color: var(--text); font-size: 12px; letter-spacing: 1px; font-weight: 700; }
+  .demo-card .b { margin-left: auto; color: var(--mint); font-size: 9px; letter-spacing: 1px; }
+  .demo-card.song .b { color: var(--purple); }
+  .demo-screen { display: flex; flex-direction: column; }
+  .demo-chrome { display: flex; justify-content: space-between; color: #3a3e48; font-size: 8.5px; letter-spacing: 2.5px; margin-bottom: 12px; }
+  .demo-onair { color: var(--muted); }
+  .demo-onair.live { color: var(--red); font-weight: 700; }
+  .demo-onair.live::before { content: "● "; }
+  .demo-out { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px; }
+  .demo-ref { color: var(--mint); font-size: 10px; letter-spacing: 4px; margin-bottom: 12px; opacity: 0; transition: .4s ease; }
+  .demo-ref.song { color: var(--purple); }
+  .demo-verse { color: var(--text); font-size: clamp(13px, 1.8vw, 17px); line-height: 1.5; white-space: pre-line; opacity: 0; transform: translateY(10px); transition: .5s ease; }
+  .demo-ref.in, .demo-verse.in { opacity: 1; transform: none; }
+  .demo-ph { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
 </style>
 </head>
 <body>
@@ -184,14 +218,25 @@
     <div class="note">ALWAYS THE LATEST VERSION · THE APP UPDATES ITSELF AFTERWARDS</div>
     <div class="note">MACOS FIRST LAUNCH: RIGHT-CLICK THE APP → OPEN</div>
 
-    <div class="monitor big">
-      <div class="chrome-l">VERSEFLOW</div>
-      <div class="chrome-r">ON AIR</div>
-      <div class="ref">JOHN 3 : 16</div>
-      <div class="verse">For God so loved the world, that he gave his only begotten Son,
-        that whosoever believeth in him should not perish, but have everlasting life.</div>
-      <div class="ver">—&nbsp; KING JAMES VERSION &nbsp;—</div>
+    <div class="demo" aria-hidden="true">
+      <div class="demo-console">
+        <div class="demo-head">
+          <span class="demo-live"><span class="wave"><i></i><i></i><i></i><i></i><i></i></span> LISTENING</span>
+          <span class="demo-mode" id="demoMode">SCRIPTURE MODE</span>
+        </div>
+        <div class="demo-transcript" id="demoTranscript"></div>
+        <div class="demo-detect" id="demoDetect"></div>
+      </div>
+      <div class="demo-screen">
+        <div class="demo-chrome"><span>VERSEFLOW · OUTPUT</span><span class="demo-onair" id="demoOnair">STANDBY</span></div>
+        <div class="demo-out">
+          <div class="demo-ref" id="demoRef"></div>
+          <div class="demo-verse" id="demoVerse"></div>
+          <div class="demo-ph" id="demoPh">the screen keeps up, automatically</div>
+        </div>
+      </div>
     </div>
+    <div class="note">A LIVE-STYLE PREVIEW · THIS IS THE APP DOING ITS THING</div>
   </section>
 
   <!-- TWO MODES -->
@@ -320,5 +365,49 @@
 </main>
 
 <footer>VERSEFLOW <span class="v">v1.2.0</span> · SCRIPTURE &amp; LYRICS FOR CHURCH MEDIA TEAMS · THE APP UPDATES ITSELF</footer>
+<script>
+(function(){
+  var T=document.getElementById('demoTranscript'), D=document.getElementById('demoDetect'),
+      M=document.getElementById('demoMode'), OA=document.getElementById('demoOnair'),
+      R=document.getElementById('demoRef'), V=document.getElementById('demoVerse'),
+      PH=document.getElementById('demoPh');
+  if(!T) return;
+  var SCENES=[
+    {mode:'SCRIPTURE MODE',song:false,
+     heard:'…for God so loved the world, that he gave his only begotten Son…',
+     card:'JOHN 3:16',badge:'98% MATCH',ref:'JOHN 3:16',
+     verse:'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.'},
+    {mode:'LYRICS MODE',song:true,
+     heard:'amazing grace, how sweet the sound, that saved a wretch like me…',
+     card:'AMAZING GRACE',badge:'HYMN · 96%',ref:'AMAZING GRACE · VERSE 1',
+     verse:'Amazing grace! how sweet the sound,\nThat saved a wretch like me!\nI once was lost, but now am found,\nWas blind, but now I see.'}
+  ];
+  var timers=[];
+  function after(ms,fn){ timers.push(setTimeout(fn,ms)); }
+  function type(el,txt,cb){ el.textContent=''; var i=0; (function s(){ if(i<=txt.length){ el.textContent=txt.slice(0,i++); after(26,s);} else cb&&cb(); })(); }
+  function play(n){
+    var s=SCENES[n];
+    T.textContent=''; D.innerHTML=''; M.textContent=s.mode;
+    OA.textContent='STANDBY'; OA.classList.remove('live');
+    R.className='demo-ref'+(s.song?' song':''); R.textContent='';
+    V.textContent=''; V.classList.remove('in'); PH.style.display='block';
+    type(T,s.heard,function(){
+      after(350,function(){
+        D.innerHTML='<div class="demo-card'+(s.song?' song':'')+'"><span class="t">'+s.card+'</span><span class="b">'+s.badge+'</span></div>';
+        after(60,function(){ if(D.firstChild) D.firstChild.classList.add('show'); });
+        after(850,function(){
+          PH.style.display='none';
+          OA.textContent='ON AIR'; OA.classList.add('live');
+          R.textContent=s.ref; V.textContent=s.verse;
+          after(40,function(){ R.classList.add('in'); V.classList.add('in'); });
+          after(3600,function(){ next(n); });
+        });
+      });
+    });
+  }
+  function next(n){ timers.forEach(clearTimeout); timers=[]; play((n+1)%SCENES.length); }
+  play(0);
+})();
+</script>
 </body>
 </html>
