@@ -33,7 +33,10 @@
   .region button{background:var(--elevated);border:1px solid var(--border-strong);color:var(--text2);
     border-radius:20px;padding:7px 16px;font-family:inherit;font-size:11px;letter-spacing:1px;cursor:pointer;transition:.15s;}
   .region button.on{background:var(--mint);color:#000;border-color:var(--mint);font-weight:800;}
-  .cur-note{text-align:center;color:var(--muted);font-size:10.5px;letter-spacing:1px;margin-bottom:36px;}
+  .cur-note{text-align:center;color:var(--muted);font-size:10.5px;letter-spacing:1px;margin-bottom:10px;}
+  .region-switch{text-align:center;margin-bottom:30px;min-height:16px;}
+  .region-switch a{color:var(--text2);font-size:11px;letter-spacing:.5px;text-decoration:none;border-bottom:1px dotted var(--border-strong);padding-bottom:1px;}
+  .region-switch a:hover{color:var(--mint);border-color:var(--mint);}
 
   .plans{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding-bottom:20px;}
   @media(max-width:720px){.plans{grid-template-columns:1fr;}}
@@ -73,7 +76,7 @@
 <body>
 <header>
   <div class="wrap">
-    <a class="brand" href="./">◤ VERSEFLOW</a>
+    <a class="brand" href="./"><svg viewBox="0 0 512 512" width="17" height="17" fill="#5eead4" style="vertical-align:-3px;margin-right:4px"><rect x="133.2" y="88.8" width="18.8" height="236.9" rx="9.4"/><rect x="194.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="250.2" y="318.5" width="11.6" height="193.5" rx="5.8"/><rect x="298.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="360.0" y="88.8" width="19.5" height="236.9" rx="9.7"/></svg>VERSEFLOW</a>
     <nav>
       <a href="./">HOME</a>
       <a class="on" href="pricing.html">PRICING</a>
@@ -89,11 +92,8 @@
     <p class="sub">VerseFlow works fully offline at no cost. Pro adds the low-latency cloud
       engine and AI song &amp; quote detection — priced fairly for your part of the world.</p>
 
-    <div class="region">
-      <button id="btn-africa" onclick="setRegion('africa')">🌍 AFRICA</button>
-      <button id="btn-intl" onclick="setRegion('intl')">🌐 INTERNATIONAL</button>
-    </div>
     <div class="cur-note" id="curNote">Prices shown in your local currency · billed monthly · cancel anytime</div>
+    <div class="region-switch" id="regionSwitch"></div>
   </section>
 
   <section class="plans">
@@ -102,7 +102,7 @@
       <div class="price"><span class="free-amt">₦0</span><span class="per">forever</span></div>
       <div style="height:26px"></div>
       <p class="desc">Everything runs on your own machine. No account, no internet, no cost.</p>
-      <a class="cta ghost" href="./#download">⭳ DOWNLOAD FREE</a>
+      <a class="cta ghost" href="./#download"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 21h14"/></svg>DOWNLOAD FREE</a>
       <ul class="feat">
         <li>5 Bible translations, bundled &amp; offline</li>
         <li>On-device sermon transcription</li>
@@ -167,23 +167,32 @@
   var COPY = {
     africa: { slash: "₦32,000", amt: "₦24,000", per: "/ month",
       save: "REGIONAL PRICING · ~$15 · SAVE 25%", free: "₦0",
-      note: "Local currency shown (₦ ≈ $15) · Paystack also supports ₵ GHS, KES, ZAR · billed monthly" },
+      note: "Local currency shown (₦ ≈ $15) · billed monthly · cancel anytime",
+      switchTo: "intl", switchLabel: "Outside Africa? See standard pricing →" },
     intl: { slash: "", amt: "$20", per: "/ month",
       save: "SHOWN IN YOUR LOCAL CURRENCY AT CHECKOUT", free: "$0",
-      note: "Your local currency at checkout via Lemon Squeezy · billed monthly · cancel anytime" }
+      note: "Shown in your local currency at checkout · billed monthly · cancel anytime",
+      switchTo: null, switchLabel: "" }
   };
   function setRegion(r){
     var c = COPY[r];
     document.getElementById('slash').style.display = c.slash ? 'inline' : 'none';
     document.getElementById('slash').textContent = c.slash;
     document.getElementById('amt').textContent = c.amt;
+    document.getElementById('save').style.display = c.save ? 'inline-block' : 'none';
     document.getElementById('save').textContent = c.save;
     document.getElementById('curNote').textContent = c.note;
     document.querySelector('.plan.free .free-amt').textContent = c.free;
-    document.getElementById('btn-africa').classList.toggle('on', r==='africa');
-    document.getElementById('btn-intl').classList.toggle('on', r==='intl');
+    // Only African visitors get a quiet switch to standard pricing; everyone
+    // else just sees the standard price with no region wording at all.
+    var sw = document.getElementById('regionSwitch');
+    if (c.switchTo) {
+      sw.innerHTML = '<a href="#" onclick="setRegion(\'' + c.switchTo + '\');return false;">' + c.switchLabel + '</a>';
+    } else {
+      sw.innerHTML = '';
+    }
   }
-  // Auto-detect: African timezone -> Africa pricing, else international.
+  // Auto-detect: African timezone -> discounted Africa pricing, else standard.
   var tz = "";
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch(e){}
   setRegion(tz.indexOf("Africa/") === 0 ? 'africa' : 'intl');

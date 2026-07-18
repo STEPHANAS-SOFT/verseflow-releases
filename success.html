@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Successful — VerseFlow Pro</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%20fill%3D%22%235EEAD4%22%3E%3Crect%20x%3D%22133.2%22%20y%3D%2288.8%22%20width%3D%2218.8%22%20height%3D%22236.9%22%20rx%3D%229.4%22/%3E%3Crect%20x%3D%22194.6%22%20y%3D%22199.3%22%20width%3D%2219.5%22%20height%3D%22231.8%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22250.2%22%20y%3D%22318.5%22%20width%3D%2211.6%22%20height%3D%22193.5%22%20rx%3D%225.8%22/%3E%3Crect%20x%3D%22298.6%22%20y%3D%22199.3%22%20width%3D%2219.5%22%20height%3D%22231.8%22%20rx%3D%229.7%22/%3E%3Crect%20x%3D%22360.0%22%20y%3D%2288.8%22%20width%3D%2219.5%22%20height%3D%22236.9%22%20rx%3D%229.7%22/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg:#0a0a0c; --surface:#101014; --elevated:#17171c; --border:#232329;
+    --border-strong:#35353e; --mint:#5eead4; --amber:#f5b944; --purple:#b98af5;
+    --text:#edeef2; --text2:#9ca0ac; --muted:#5c6070;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:"SF Mono",Menlo,Consolas,"JetBrains Mono",monospace;line-height:1.6;-webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .sans{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;}
+  .card{background:var(--surface);border:1px solid rgba(94,234,212,.4);border-radius:18px;
+    max-width:520px;width:100%;padding:44px 38px;text-align:center;
+    box-shadow:0 24px 80px rgba(0,0,0,.5);}
+  .check{width:72px;height:72px;margin:0 auto 24px;border-radius:50%;
+    background:rgba(94,234,212,.12);border:1.5px solid var(--mint);
+    display:flex;align-items:center;justify-content:center;}
+  .check svg{width:36px;height:36px;stroke:var(--mint);stroke-width:3;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;}
+  .tag{color:var(--mint);font-size:11px;letter-spacing:4px;margin-bottom:14px;}
+  h1{font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:14px;}
+  h1 .mint{color:var(--mint);}
+  p{color:var(--text2);font-size:13.5px;margin-bottom:14px;}
+  .steps{background:var(--elevated);border:1px solid var(--border);border-radius:10px;
+    text-align:left;padding:18px 20px;margin:24px 0 20px;}
+  .steps .row{display:flex;gap:12px;align-items:flex-start;font-size:12.5px;color:var(--text2);padding:6px 0;}
+  .steps .row b{color:var(--mint);font-weight:700;}
+  .steps .n{color:var(--mint);font-weight:800;min-width:16px;}
+  .note{color:var(--muted);font-size:11px;letter-spacing:.5px;margin-top:8px;}
+  .home{display:inline-block;margin-top:26px;color:var(--text2);text-decoration:none;
+    font-size:11px;letter-spacing:1.5px;border:1px solid var(--border-strong);
+    border-radius:8px;padding:11px 22px;transition:.15s;}
+  .home:hover{border-color:var(--mint);color:var(--mint);}
+  .spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--muted);
+    border-top-color:var(--mint);border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle;margin-right:7px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">
+      <svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18.5 20 6.5"/></svg>
+    </div>
+    <div class="tag">PAYMENT SUCCESSFUL</div>
+    <h1 class="sans">Welcome to <span class="mint">VerseFlow&nbsp;Pro</span></h1>
+    <p>Thank you — your subscription is active. There's nothing more to do here.</p>
+
+    <div class="steps">
+      <div class="row"><span class="n">1</span><span><b>Return to the VerseFlow app.</b> It's checking your account right now.</span></div>
+      <div class="row"><span class="n">2</span><span>Pro unlocks <b>automatically</b> — the Account tab flips to “VerseFlow Pro · Active” within a few seconds.</span></div>
+      <div class="row"><span class="n">3</span><span>The cloud engine and AI features are now switched on for this device.</span></div>
+    </div>
+
+    <p class="note"><span class="spinner"></span>You can close this tab and go back to the app.</p>
+    <a class="home" href="./">← BACK TO VERSEFLOW.APP</a>
+  </div>
+</body>
+</html>
