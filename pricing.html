@@ -72,111 +72,112 @@
   .qa .q{color:var(--text);font-size:13px;font-weight:700;margin:18px 0 6px;}
   .qa .a{color:var(--text2);font-size:12.5px;}
   footer{border-top:1px solid var(--border);padding:26px 0;color:var(--muted);font-size:10px;letter-spacing:1.5px;text-align:center;}
+  .langsel { background:var(--elevated); color:var(--text2); border:1px solid var(--border-strong); border-radius:6px; padding:5px 8px; font-family:inherit; font-size:11px; letter-spacing:1px; cursor:pointer; }
+  .langsel:hover { border-color:var(--mint); }
 </style>
+<script src="i18n.js" defer></script>
 </head>
 <body>
 <header>
   <div class="wrap">
     <a class="brand" href="./"><svg viewBox="0 0 512 512" width="17" height="17" fill="#5eead4" style="vertical-align:-3px;margin-right:4px"><rect x="133.2" y="88.8" width="18.8" height="236.9" rx="9.4"/><rect x="194.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="250.2" y="318.5" width="11.6" height="193.5" rx="5.8"/><rect x="298.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="360.0" y="88.8" width="19.5" height="236.9" rx="9.7"/></svg>VERSEFLOW</a>
     <nav>
-      <a href="./">HOME</a>
-      <a class="on" href="pricing.html">PRICING</a>
-      <a href="./#download">DOWNLOAD</a>
+      <select id="vfLang" aria-label="Language" class="langsel"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option></select>
+      <a href="./" data-i18n="nav_home">HOME</a>
+      <a class="on" href="pricing.html" data-i18n="nav_pricing">PRICING</a>
+      <a href="./#download" data-i18n="nav_download">DOWNLOAD</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
-    <div class="tag">SIMPLE, HONEST PRICING</div>
-    <h1>Free offline forever.<br><span class="mint">Pro</span> when you want the cloud.</h1>
-    <p class="sub">VerseFlow works fully offline at no cost. Pro adds the low-latency cloud
-      engine and AI song &amp; quote detection — priced fairly for your part of the world.</p>
+    <div class="tag" data-i18n="pr_tag">SIMPLE, HONEST PRICING</div>
+    <h1 data-i18n-html="pr_h1_html">Free offline forever.<br><span class="mint">Pro</span> when you want the cloud.</h1>
+    <p class="sub" data-i18n="pr_sub">VerseFlow works fully offline at no cost. Pro adds the low-latency cloud engine and AI song &amp; quote detection — priced fairly for your part of the world.</p>
 
-    <div class="cur-note" id="curNote">Prices shown in your local currency · billed monthly · cancel anytime</div>
+    <div class="cur-note" id="curNote" data-i18n="pr_curnote">Prices shown in your local currency · billed monthly · cancel anytime</div>
     <div class="region-switch" id="regionSwitch"></div>
   </section>
 
   <section class="plans">
     <div class="plan free">
-      <div class="name">FREE · OFFLINE</div>
-      <div class="price"><span class="free-amt">₦0</span><span class="per">forever</span></div>
+      <div class="name" data-i18n="pr_free_name">FREE · OFFLINE</div>
+      <div class="price"><span class="free-amt">₦0</span><span class="per" data-i18n="pr_free_per">forever</span></div>
       <div style="height:26px"></div>
-      <p class="desc">Everything runs on your own machine. No account, no internet, no cost.</p>
-      <a class="cta ghost" href="./#download"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 21h14"/></svg>DOWNLOAD FREE</a>
+      <p class="desc" data-i18n="pr_free_desc">Everything runs on your own machine. No account, no internet, no cost.</p>
+      <a class="cta ghost" href="./#download"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 21h14"/></svg><span data-i18n="pr_dl_free">DOWNLOAD FREE</span></a>
       <ul class="feat">
-        <li>5 Bible translations, bundled &amp; offline</li>
-        <li>On-device sermon transcription</li>
-        <li>Reference &amp; content-quote detection</li>
-        <li>Lyrics mode with on-device song matching</li>
-        <li>NDI + display-window output</li>
-        <li class="off">Cloud low-latency transcription</li>
-        <li class="off">AI song &amp; quote identification</li>
+        <li data-i18n-html="pr_ff1_html">5 Bible translations, bundled &amp; offline</li>
+        <li data-i18n="pr_ff2">On-device sermon transcription</li>
+        <li data-i18n="pr_ff3">Reference &amp; content-quote detection</li>
+        <li data-i18n="pr_ff4">Lyrics mode with on-device song matching</li>
+        <li data-i18n="pr_ff5">NDI + display-window output</li>
+        <li class="off" data-i18n="pr_ff6">Cloud low-latency transcription</li>
+        <li class="off" data-i18n="pr_ff7">AI song &amp; quote identification</li>
       </ul>
     </div>
 
     <div class="plan pro">
-      <div class="badge">MOST POPULAR</div>
-      <div class="name">PRO · CLOUD</div>
+      <div class="badge" data-i18n="pr_badge">MOST POPULAR</div>
+      <div class="name" data-i18n="pr_pro_name">PRO · CLOUD</div>
       <div class="price">
         <span class="slash" id="slash">₦32,000</span>
         <span class="amt" id="amt">₦24,000</span>
-        <span class="per">/ month</span>
+        <span class="per" data-i18n="pr_per_month">/ month</span>
       </div>
       <span class="save" id="save">REGIONAL PRICING · SAVE 25%</span>
-      <p class="desc">Everything in Free, plus the cloud engine and full AI detection —
-        the fastest, smartest VerseFlow.</p>
-      <a class="cta primary" id="proCta" href="./#download">▲ GET PRO — IN THE APP</a>
-      <p class="inapp-note">Download free, create an account, then
-        <strong>Settings → Account → Upgrade to Pro</strong>. Pay in your local
-        currency — Pro unlocks instantly on that device.</p>
+      <p class="desc" data-i18n="pr_pro_desc">Everything in Free, plus the cloud engine and full AI detection — the fastest, smartest VerseFlow.</p>
+      <a class="cta primary" id="proCta" href="./#download" data-i18n="pr_pro_cta">▲ GET PRO — IN THE APP</a>
+      <p class="inapp-note" data-i18n-html="pr_inapp_html">Download free, create an account, then <strong>Settings → Account → Upgrade to Pro</strong>. Pay in your local currency — Pro unlocks instantly on that device.</p>
       <ul class="feat">
-        <li><strong>Everything in Free</strong></li>
-        <li>Ultra-low-latency cloud transcription</li>
-        <li>AI song identification from any verse</li>
-        <li>AI Bible-quote detection (paraphrase-aware)</li>
-        <li>Smart online song search &amp; import</li>
-        <li>Auto-updates &amp; priority support</li>
-        <li>1 active device per account</li>
+        <li data-i18n-html="pr_pf1_html"><strong>Everything in Free</strong></li>
+        <li data-i18n="pr_pf2">Ultra-low-latency cloud transcription</li>
+        <li data-i18n="pr_pf3">AI song identification from any verse</li>
+        <li data-i18n="pr_pf4">AI Bible-quote detection (paraphrase-aware)</li>
+        <li data-i18n="pr_pf5">Smart online song search &amp; import</li>
+        <li data-i18n="pr_pf6">Auto-updates &amp; priority support</li>
+        <li data-i18n="pr_pf7">1 active device per account</li>
       </ul>
     </div>
   </section>
 
   <section class="faq">
-    <h2>QUESTIONS</h2>
+    <h2 data-i18n="pr_faq_h">QUESTIONS</h2>
     <div class="qa">
-      <div class="q">How do I subscribe to Pro?</div>
-      <div class="a">Inside the app. Download VerseFlow (free), create an account, then open Settings → Account → Upgrade to Pro. You'll pay via Paystack (Africa) or Lemon Squeezy (international) right there, and Pro unlocks on that device the moment your payment clears. Subscribing in the app keeps your payment tied to your account automatically.</div>
-      <div class="q">Is the free version really free?</div>
-      <div class="a">Yes — offline mode is free forever, no account needed. It's the full app minus the cloud/AI features that cost us to run.</div>
-      <div class="q">Why is the price different by region?</div>
-      <div class="a">We price fairly for local economies. African churches pay a discounted rate in local currency via Paystack; international churches pay via Lemon Squeezy in their own currency.</div>
-      <div class="q">How many devices can use one Pro account?</div>
-      <div class="a">One active device at a time. Signing in on a new device signs the previous one out — so your subscription stays yours.</div>
-      <div class="q">Can I cancel anytime?</div>
-      <div class="a">Anytime. You keep Pro until the end of the period you paid for, then drop back to the free offline tier — your songs and settings stay.</div>
+      <div class="q" data-i18n="pr_q1">How do I subscribe to Pro?</div>
+      <div class="a" data-i18n="pr_a1">How you subscribe to Pro.</div>
+      <div class="q" data-i18n="pr_q2">Is the free version really free?</div>
+      <div class="a" data-i18n="pr_a2">Yes.</div>
+      <div class="q" data-i18n="pr_q3">Why is the price different by region?</div>
+      <div class="a" data-i18n="pr_a3">Regional pricing.</div>
+      <div class="q" data-i18n="pr_q4">How many devices can use one Pro account?</div>
+      <div class="a" data-i18n="pr_a4">One device.</div>
+      <div class="q" data-i18n="pr_q5">Can I cancel anytime?</div>
+      <div class="a" data-i18n="pr_a5">Anytime.</div>
     </div>
   </section>
 </main>
 
-<footer>VERSEFLOW v1.2.0 · FREE OFFLINE · PRO $15 IN AFRICA · $20 INTERNATIONAL · PER MONTH</footer>
+<footer data-i18n="pr_footer">VERSEFLOW · FREE OFFLINE · PRO $15 IN AFRICA · $20 INTERNATIONAL · PER MONTH</footer>
 
 <script>
   // Subscription happens inside the app (Settings → Account → Upgrade), where
   // the payment is tied to the signed-in account and Pro unlocks instantly.
   // The page just shows regional pricing and sends people to the download.
+  var USD = { africa: "15", intl: "20" };
   var COPY = {
-    africa: { slash: "₦32,000", amt: "₦24,000", per: "/ month",
-      save: "REGIONAL PRICING · ~$15 · SAVE 25%", free: "₦0",
-      note: "Local currency shown (₦ ≈ $15) · billed monthly · cancel anytime",
-      switchTo: "intl", switchLabel: "Outside Africa? See standard pricing →" },
-    intl: { slash: "", amt: "$20", per: "/ month",
-      save: "SHOWN IN YOUR LOCAL CURRENCY AT CHECKOUT", free: "$0",
-      note: "Shown in your local currency at checkout · billed monthly · cancel anytime",
-      switchTo: null, switchLabel: "" }
+    africa: { slash: "₦32,000", amt: "₦24,000", free: "₦0", switchTo: "intl" },
+    intl:   { slash: "", amt: "$20", free: "$0", switchTo: null }
   };
+  function fill(s){ return (s||"").replace("{usd}", USD[REGION] || ""); }
   function setRegion(r){
+    REGION = r;
     var c = COPY[r];
+    c.per = (window.vfT && window.vfT("pr_per_month")) || "/ month";
+    c.note = fill((window.vfT && window.vfT(r === "africa" ? "pr_note_africa" : "pr_note_intl")));
+    c.save = r === "africa" ? fill(window.vfT && window.vfT("pr_save_africa")) : (window.vfT && window.vfT("pr_save_intl"));
+    c.switchLabel = (window.vfT && window.vfT("pr_switch_intl")) || "";
     document.getElementById('slash').style.display = c.slash ? 'inline' : 'none';
     document.getElementById('slash').textContent = c.slash;
     document.getElementById('amt').textContent = c.amt;
@@ -194,10 +195,13 @@
     }
   }
   // Auto-detect: African timezone -> discounted Africa pricing, else standard.
+  var REGION = "intl";
   var tz = "";
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch(e){}
-  var REGION = (tz.indexOf("Africa/") === 0) ? 'africa' : 'intl';
-  setRegion(REGION);
+  REGION = (tz.indexOf("Africa/") === 0) ? 'africa' : 'intl';
+  // Re-apply region strings whenever the language changes.
+  window.vfAfterApply = function(){ setRegion(REGION); };
+  if (window.vfLang) setRegion(REGION);
 
   // Live prices come from the backend (which reads the Paystack plan + Lemon
   // Squeezy variant), so changing the price in those dashboards updates here
@@ -208,9 +212,7 @@
       if (p.africa && p.africa.display) {
         COPY.africa.amt = p.africa.display;
         COPY.africa.slash = p.africaCompareDisplay || "";
-        var usd = p.africa.usdApprox;
-        COPY.africa.save = "REGIONAL PRICING · ~$" + usd + " · SAVE 25%";
-        COPY.africa.note = "Local currency shown (₦ ≈ $" + usd + ") · billed monthly · cancel anytime";
+        if (p.africa.usdApprox) USD.africa = String(p.africa.usdApprox);
       }
       if (p.intl && p.intl.display) { COPY.intl.amt = p.intl.display; }
       setRegion(REGION);

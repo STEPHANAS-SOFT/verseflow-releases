@@ -188,24 +188,36 @@
   .demo-verse { color: var(--text); font-size: clamp(13px, 1.8vw, 17px); line-height: 1.5; white-space: pre-line; opacity: 0; transform: translateY(10px); transition: .5s ease; }
   .demo-ref.in, .demo-verse.in { opacity: 1; transform: none; }
   .demo-ph { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
+  .langsel { margin-left:auto; background:var(--elevated); color:var(--text2); border:1px solid var(--border-strong); border-radius:6px; padding:5px 8px; font-family:inherit; font-size:11px; letter-spacing:1px; cursor:pointer; }
+  .langsel:hover { border-color:var(--mint); }
+  header .pill { margin-left:14px; }
+  .langbar { border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:40px 0; text-align:center; }
+  .langbar .k{ color:var(--purple); font-size:11px; letter-spacing:4px; }
+  .langbar h2{ font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif; font-size:clamp(22px,3.6vw,30px); font-weight:700; letter-spacing:-.5px; margin:12px 0 12px; }
+  .langbar p{ color:var(--text2); font-size:13px; max-width:680px; margin:0 auto 18px; }
+  .langbar .flags{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .langbar .flag{ border:1px solid rgba(185,138,245,.4); color:var(--purple); border-radius:20px; padding:6px 14px; font-size:11px; letter-spacing:1px; cursor:pointer; background:none; font-family:inherit; }
+  .langbar .flag:hover{ background:rgba(185,138,245,.1); }
 </style>
+<script src="i18n.js" defer></script>
 </head>
 <body>
 <header>
   <div class="wrap">
     <svg width="26" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#5EEAD4"><rect x="9.7" y="23.8" width="19.5" height="59.2" rx="9.7"/><rect x="40.1" y="0.0" width="19.5" height="140.1" rx="9.7"/><rect x="71.1" y="17.3" width="19.5" height="197.1" rx="9.7"/><rect x="102.2" y="47.7" width="19.5" height="219.5" rx="9.7"/><rect x="133.2" y="88.8" width="18.8" height="236.9" rx="9.4"/><rect x="163.6" y="145.2" width="19.5" height="238.3" rx="9.7"/><rect x="194.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="225.7" y="255.6" width="19.5" height="214.5" rx="9.7"/><rect x="250.2" y="318.5" width="11.6" height="193.5" rx="5.8"/><rect x="267.6" y="255.6" width="19.5" height="214.5" rx="9.7"/><rect x="298.6" y="199.3" width="19.5" height="231.8" rx="9.7"/><rect x="328.9" y="145.2" width="19.5" height="238.3" rx="9.7"/><rect x="360.0" y="88.8" width="19.5" height="236.9" rx="9.7"/><rect x="391.0" y="47.7" width="19.5" height="219.5" rx="9.7"/><rect x="421.4" y="17.3" width="19.5" height="197.1" rx="9.7"/><rect x="452.4" y="0.0" width="19.5" height="140.1" rx="9.7"/><rect x="482.8" y="23.8" width="19.5" height="58.5" rx="9.7"/></svg>
     <div class="brand">VERSEFLOW</div>
-    <div class="pill">SCRIPTURE &amp; LYRICS · LIVE</div>
-    <a class="nav-dl" href="pricing.html" style="color:var(--text2)">PRICING</a>
-    <a class="nav-dl" href="#download"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 21h14"/></svg> DOWNLOAD</a>
+    <div class="pill" data-i18n="pill">SCRIPTURE &amp; LYRICS · LIVE</div>
+    <select id="vfLang" aria-label="Language" class="langsel"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option></select>
+    <a class="nav-dl" href="pricing.html" style="color:var(--text2)" data-i18n="nav_pricing">PRICING</a>
+    <a class="nav-dl" href="#download"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 21h14"/></svg> <span data-i18n="nav_download">DOWNLOAD</span></a>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
-    <div class="tag">LISTEN · DETECT · DISPLAY</div>
-    <h1>Your screen keeps up<br>with <span class="mint">the sermon</span> and <span class="purple">the song</span>.</h1>
-    <p class="sub">
+    <div class="tag" data-i18n="hero_tag">LISTEN · DETECT · DISPLAY</div>
+    <h1 data-i18n-html="hero_h1_html">Your screen keeps up<br>with <span class="mint">the sermon</span> and <span class="purple">the song</span>.</h1>
+    <p class="sub" data-i18n="hero_sub">
       VerseFlow listens to the whole service. As the pastor preaches it detects Bible
       references and quotes; as the congregation sings it recognises the hymn or worship
       song — and puts the words on your screen automatically, through its own display
@@ -214,15 +226,15 @@
     <div class="buttons" id="download">
       <a class="btn btn-primary" href="https://github.com/STEPHANAS-SOFT/verseflow-releases/releases/latest/download/VerseFlow-Setup.exe">
         <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M3 5.4 10.4 4.3v7.3H3V5.4zm0 13.2 7.4 1.1v-7.2H3v6.1zM11.2 4.1 21 2.7v8.9h-9.8V4.1zm0 15.8L21 21.3v-8.7h-9.8v7.3z"/></svg>
-        <span>DOWNLOAD FOR WINDOWS <small>Windows 10 / 11 · 64-bit · free</small></span>
+        <span><span data-i18n="dl_win">DOWNLOAD FOR WINDOWS</span> <small data-i18n="dl_win_sub">Windows 10 / 11 · 64-bit · free</small></span>
       </a>
       <a class="btn btn-mac" href="https://github.com/STEPHANAS-SOFT/verseflow-releases/releases/latest/download/VerseFlow.dmg">
         <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M17.05 12.53c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.71-3.19-1.73-1.36-.14-2.65.8-3.34.8-.68 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.15.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.49zM14.86 5.86c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.55 1.31-.56.64-1.05 1.68-.92 2.67.97.08 1.96-.49 2.57-1.22z"/></svg>
-        <span>DOWNLOAD FOR MACOS <small>macOS 11+ · Intel &amp; Apple Silicon · free</small></span>
+        <span><span data-i18n="dl_mac">DOWNLOAD FOR MACOS</span> <small data-i18n="dl_mac_sub">macOS 11+ · Intel &amp; Apple Silicon · free</small></span>
       </a>
     </div>
-    <div class="note">ALWAYS THE LATEST VERSION · THE APP UPDATES ITSELF AFTERWARDS</div>
-    <div class="note">MACOS: IF IT SAYS “DAMAGED”, OPEN <b>TERMINAL</b> AND RUN THIS ONCE, THEN OPEN THE APP:</div>
+    <div class="note" data-i18n="note_latest">ALWAYS THE LATEST VERSION · THE APP UPDATES ITSELF AFTERWARDS</div>
+    <div class="note" data-i18n="note_mac_damaged">MACOS: IF IT SAYS “DAMAGED”, OPEN TERMINAL AND RUN THIS ONCE, THEN OPEN THE APP:</div>
     <div class="maccmd" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('xattr -cr /Applications/VerseFlow.app')" title="Click to copy">xattr -cr /Applications/VerseFlow.app</div>
 
     <div class="demo" aria-hidden="true">
@@ -239,103 +251,104 @@
         <div class="demo-out">
           <div class="demo-ref" id="demoRef"></div>
           <div class="demo-verse" id="demoVerse"></div>
-          <div class="demo-ph" id="demoPh">the screen keeps up, automatically</div>
+          <div class="demo-ph" id="demoPh" data-i18n="demo_ph">the screen keeps up, automatically</div>
         </div>
       </div>
     </div>
-    <div class="note">A LIVE-STYLE PREVIEW · THIS IS THE APP DOING ITS THING</div>
+    <div class="note" data-i18n="note_preview">A LIVE-STYLE PREVIEW · THIS IS THE APP DOING ITS THING</div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="langbar">
+    <div class="k" data-i18n="lang_k">NOW IN YOUR LANGUAGE</div>
+    <h2 data-i18n="lang_h">Detects and displays in 6 languages</h2>
+    <p data-i18n="lang_p">English, Spanish, French, German, Italian and Portuguese — transcription, verse and song detection, voice commands and the whole interface. Pick your language in the app; a Bible in each is bundled.</p>
+    <div class="flags">
+      <button class="flag" onclick="vfSetLang('en')">English</button><button class="flag" onclick="vfSetLang('es')">Español</button><button class="flag" onclick="vfSetLang('fr')">Français</button><button class="flag" onclick="vfSetLang('de')">Deutsch</button><button class="flag" onclick="vfSetLang('it')">Italiano</button><button class="flag" onclick="vfSetLang('pt')">Português</button>
+    </div>
   </section>
 
   <!-- TWO MODES -->
   <section class="modes">
     <div class="mode scripture">
-      <div class="kicker">SCRIPTURE MODE</div>
-      <h2 class="sans">Every verse, the moment it's preached</h2>
-      <p>Spoken references, unspoken quotes, and voice commands — heard live and checked
-         against the real Bible so the wrong verse never goes up.</p>
+      <div class="kicker" data-i18n="sc_kicker">SCRIPTURE MODE</div>
+      <h2 class="sans" data-i18n="sc_h">Every verse, the moment it's preached</h2>
+      <p data-i18n="sc_p">Spoken references, unspoken quotes, and voice commands — heard live and checked against the real Bible so the wrong verse never goes up.</p>
       <div class="monitor mini">
         <div class="ref">PSALM 91 : 7</div>
         <div class="verse" style="font-size:clamp(13px,2.4vw,20px)">A thousand shall fall at thy side,
           and ten thousand at thy right hand; but it shall not come nigh thee.</div>
       </div>
       <ul>
-        <li>Hears "John three sixteen", "the twenty-third Psalm", "First Corinthians thirteen"</li>
-        <li>Catches quotes with no citation — by the words alone</li>
-        <li>Understands paraphrase, personalised wording ("my" for "thy") and numbers</li>
-        <li>An AI second pass confirms the tricky quotes a search would miss</li>
-        <li>Voice-driven: "next verse", "go back", "verse five", "switch to KJV"</li>
+        <li data-i18n="sc_li1">Hears "John three sixteen", "the twenty-third Psalm", "First Corinthians thirteen"</li>
+        <li data-i18n="sc_li2">Catches quotes with no citation — by the words alone</li>
+        <li data-i18n="sc_li3">Understands paraphrase, personalised wording ("my" for "thy") and numbers</li>
+        <li data-i18n="sc_li4">An AI second pass confirms the tricky quotes a search would miss</li>
+        <li data-i18n="sc_li5">Voice-driven: "next verse", "go back", "verse five", "switch to KJV"</li>
       </ul>
     </div>
     <div class="mode lyrics">
-      <div class="kicker">LYRICS MODE</div>
-      <h2 class="sans">Hymns and worship songs, identified as they're sung</h2>
-      <p>Switch to Lyrics mode and VerseFlow listens through the music, recognises the
-         song, and lays it out in slides ready to click straight to the screen.</p>
+      <div class="kicker" data-i18n="ly_kicker">LYRICS MODE</div>
+      <h2 class="sans" data-i18n="ly_h">Hymns and worship songs, identified as they're sung</h2>
+      <p data-i18n="ly_p">Switch to Lyrics mode and VerseFlow listens through the music, recognises the song, and lays it out in slides ready to click straight to the screen.</p>
       <div class="monitor song mini">
         <div class="ref">AMAZING GRACE</div>
         <div class="verse" style="font-size:clamp(13px,2.4vw,20px)">Amazing grace, how sweet the sound,<br>that saved a wretch like me.</div>
       </div>
       <ul>
-        <li>On-device vocal isolation strips the instruments before listening</li>
-        <li>Detects any song already in your library — instantly, offline</li>
-        <li>Identifies unknown songs by AI from any verse, then arranges them</li>
-        <li>A studied second pass confirms the exact song with a certainty score</li>
-        <li>Smart search: type a title, an artist, or a half-remembered line</li>
+        <li data-i18n="ly_li1">On-device vocal isolation strips the instruments before listening</li>
+        <li data-i18n="ly_li2">Detects any song already in your library — instantly, offline</li>
+        <li data-i18n="ly_li3">Identifies unknown songs by AI from any verse, then arranges them</li>
+        <li data-i18n="ly_li4">A studied second pass confirms the exact song with a certainty score</li>
+        <li data-i18n="ly_li5">Smart search: type a title, an artist, or a half-remembered line</li>
       </ul>
     </div>
   </section>
 
   <!-- CAPABILITIES -->
   <div class="section-head">
-    <div class="k">IN THE BOOTH</div>
-    <h2 class="sans">Built for whoever runs the screen</h2>
+    <div class="k" data-i18n="cap_k">IN THE BOOTH</div>
+    <h2 class="sans" data-i18n="cap_h">Built for whoever runs the screen</h2>
   </div>
   <section class="features">
     <div class="card amber">
-      <h3>NDI + DISPLAY OUTPUT</h3>
-      <p>A real NDI source with true-alpha overlay for OBS / vMix lower-thirds, plus a
-         fullscreen display window you can drag straight to the projector.</p>
+      <h3 data-i18n="cap1_h">NDI + DISPLAY OUTPUT</h3>
+      <p data-i18n="cap1_p">A real NDI source with true-alpha overlay for OBS / vMix lower-thirds, plus a fullscreen display window you can drag straight to the projector.</p>
     </div>
     <div class="card red">
-      <h3>AUTO-LIVE, HANDS-FREE</h3>
-      <p>Arm Auto-Live and detections go to screen on their own — or keep manual control
-         with preview / program monitors and one-key TAKE. Mentions project; quotes wait
-         for your click.</p>
+      <h3 data-i18n="cap2_h">AUTO-LIVE, HANDS-FREE</h3>
+      <p data-i18n="cap2_p">Arm Auto-Live and detections go to screen on their own — or keep manual control with preview / program monitors and one-key TAKE.</p>
     </div>
     <div class="card mint">
-      <h3>ULTRA-LOW LATENCY</h3>
-      <p>Premium streaming transcription puts a spoken verse on screen in well under a
-         second — with a fight-to-stay-on-air connection that survives shaky networks.</p>
+      <h3 data-i18n="cap3_h">ULTRA-LOW LATENCY</h3>
+      <p data-i18n="cap3_p">Premium streaming transcription puts a spoken verse on screen in well under a second — with a connection that survives shaky networks.</p>
     </div>
     <div class="card purple">
-      <h3>YOUR SONG LIBRARY</h3>
-      <p>Every song you import is saved, arranged into verse / chorus slides, and
-         recognised instantly next time — the library gets smarter every service.</p>
+      <h3 data-i18n="cap4_h">YOUR SONG LIBRARY</h3>
+      <p data-i18n="cap4_p">Every song you import is saved, arranged into verse / chorus slides, and recognised instantly next time — the library gets smarter every service.</p>
     </div>
     <div class="card mint">
-      <h3>OFFLINE BIBLE LIBRARY</h3>
-      <p>Five translations bundled — detection, search and chapter browsing work with no
-         internet at all. An offline transcription engine is built in too.</p>
+      <h3 data-i18n="cap5_h">OFFLINE BIBLE LIBRARY</h3>
+      <p data-i18n="cap5_p">Translations bundled — detection, search and chapter browsing work with no internet at all. An offline transcription engine is built in too.</p>
     </div>
     <div class="card amber">
-      <h3>CUSTOM OUTPUT</h3>
-      <p>Your fonts sizes, text and reference colours, background or transparent overlay,
-         and a named NDI source — tuned to match your stream.</p>
+      <h3 data-i18n="cap6_h">CUSTOM OUTPUT</h3>
+      <p data-i18n="cap6_p">Your fonts and sizes, text and reference colours, background or transparent overlay, a lower-third layout, and a named NDI source — tuned to match your stream.</p>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <div class="section-head"><div class="k">HOW IT WORKS</div><h2 class="sans">Plug in a microphone. That's the setup.</h2></div>
+  <div class="section-head"><div class="k" data-i18n="how_k">HOW IT WORKS</div><h2 class="sans" data-i18n="how_h">Plug in a microphone. That's the setup.</h2></div>
   <section class="flow">
-    <div class="step"><div class="n">01</div><h4>IT LISTENS</h4><p>Point it at the room mic or a vocal feed from your mixer.</p></div>
-    <div class="step"><div class="n">02</div><h4>IT UNDERSTANDS</h4><p>Verses and songs are recognised live and verified before display.</p></div>
-    <div class="step"><div class="n">03</div><h4>YOU DECIDE</h4><p>Take it to screen with a click — or let Auto-Live do it for you.</p></div>
-    <div class="step"><div class="n">04</div><h4>IT GOES OUT</h4><p>Display window, NDI to OBS / vMix, or a second projector output.</p></div>
+    <div class="step"><div class="n">01</div><h4 data-i18n="how1_h">IT LISTENS</h4><p data-i18n="how1_p">Point it at the room mic or a vocal feed from your mixer.</p></div>
+    <div class="step"><div class="n">02</div><h4 data-i18n="how2_h">IT UNDERSTANDS</h4><p data-i18n="how2_p">Verses and songs are recognised live and verified before display.</p></div>
+    <div class="step"><div class="n">03</div><h4 data-i18n="how3_h">YOU DECIDE</h4><p data-i18n="how3_p">Take it to screen with a click — or let Auto-Live do it for you.</p></div>
+    <div class="step"><div class="n">04</div><h4 data-i18n="how4_h">IT GOES OUT</h4><p data-i18n="how4_p">Display window, NDI to OBS / vMix, or a second projector output.</p></div>
   </section>
 
   <!-- VERSIONS -->
   <section class="versions">
-    <h2>BIBLE TRANSLATIONS</h2>
+    <h2 data-i18n="ver_h">BIBLE TRANSLATIONS</h2>
     <div class="chips">
       <span class="chip on">KJV</span>
       <span class="chip on">WORLD ENGLISH (WEB)</span>
@@ -344,29 +357,27 @@
       <span class="chip on">YOUNG'S LITERAL</span>
       <span class="chip soon">NKJV · NLT · AMP — coming</span>
     </div>
-    <div class="fine">Bundled versions work fully offline. Switch by voice or a number key, live.</div>
+    <div class="fine" data-i18n="ver_fine">Bundled versions work fully offline. Switch by voice or a number key, live.</div>
   </section>
 
   <!-- SECURE -->
   <section class="secure">
     <div class="lock">🔒</div>
     <div>
-      <div class="h">PRIVATE &amp; SECURE BY DESIGN</div>
-      <p>Your audio is transcribed and discarded — never stored. Cloud features run over
-         an encrypted, account-verified connection with no keys or endpoints exposed in the
-         app. Offline mode keeps everything on your machine. Sign in once; it just works.</p>
+      <div class="h" data-i18n="sec_h">PRIVATE &amp; SECURE BY DESIGN</div>
+      <p data-i18n="sec_p">Your audio is transcribed and discarded — never stored. Cloud features run over an encrypted, account-verified connection with no keys or endpoints exposed in the app. Offline mode keeps everything on your machine. Sign in once; it just works.</p>
     </div>
   </section>
 
   <!-- REQUIREMENTS -->
   <section class="reqs">
-    <h2>REQUIREMENTS</h2>
+    <h2 data-i18n="req_h">REQUIREMENTS</h2>
     <ul>
-      <li>Windows 10 or 11 (64-bit) or macOS 11+ — everything is bundled, no other software needed</li>
-      <li>A microphone or an audio feed from your sound desk (a vocal send works best for singing)</li>
-      <li>Cloud features (lowest latency, AI song &amp; quote detection): a free VerseFlow account, created in the app</li>
-      <li>Fully-offline use: built-in engines — a one-time model download, then no internet required</li>
-      <li>For OBS output: the free DistroAV (obs-ndi) plugin on the receiving machine</li>
+      <li data-i18n="req1">Windows 10 or 11 (64-bit) or macOS 11+ — everything is bundled, no other software needed</li>
+      <li data-i18n="req2">A microphone or an audio feed from your sound desk (a vocal send works best for singing)</li>
+      <li data-i18n="req3">Cloud features (lowest latency, AI song &amp; quote detection): a free VerseFlow account, created in the app</li>
+      <li data-i18n="req4">Fully-offline use: built-in engines — a one-time model download, then no internet required</li>
+      <li data-i18n="req5">For OBS output: the free DistroAV (obs-ndi) plugin on the receiving machine</li>
     </ul>
   </section>
 </main>

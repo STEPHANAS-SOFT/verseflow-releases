@@ -42,24 +42,25 @@
     border-top-color:var(--mint);border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle;margin-right:7px;}
   @keyframes spin{to{transform:rotate(360deg);}}
 </style>
+<script src="i18n.js" defer></script>
 </head>
 <body>
   <div class="card">
     <div class="check">
       <svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18.5 20 6.5"/></svg>
     </div>
-    <div class="tag">PAYMENT SUCCESSFUL</div>
-    <h1 class="sans">Welcome to <span class="mint">VerseFlow&nbsp;Pro</span></h1>
-    <p>Thank you — your subscription is active. There's nothing more to do here.</p>
+    <div class="tag" data-i18n="su_tag">PAYMENT SUCCESSFUL</div>
+    <h1 class="sans" data-i18n-html="su_h1_html">Welcome to <span class="mint">VerseFlow&nbsp;Pro</span></h1>
+    <p data-i18n="su_p">Thank you — your subscription is active. There's nothing more to do here.</p>
 
     <div class="steps">
-      <div class="row"><span class="n">1</span><span><b>Return to the VerseFlow app.</b> It's checking your account right now.</span></div>
-      <div class="row"><span class="n">2</span><span>Pro unlocks <b>automatically</b> — the Account tab flips to “VerseFlow Pro · Active” within a few seconds.</span></div>
-      <div class="row"><span class="n">3</span><span>The cloud engine and AI features are now switched on for this device.</span></div>
+      <div class="row"><span class="n">1</span><span data-i18n-html="su_s1_html"><b>Return to the VerseFlow app.</b> It's checking your account right now.</span></div>
+      <div class="row"><span class="n">2</span><span data-i18n-html="su_s2_html">Pro unlocks <b>automatically</b> — the Account tab flips to “VerseFlow Pro · Active” within a few seconds.</span></div>
+      <div class="row"><span class="n">3</span><span data-i18n="su_s3">The cloud engine and AI features are now switched on for this device.</span></div>
     </div>
 
-    <p class="note"><span class="spinner"></span>You can close this tab and go back to the app.</p>
-    <a class="home" href="./">← BACK TO VERSEFLOW.APP</a>
+    <p class="note"><span class="spinner"></span><span data-i18n="su_note">You can close this tab and go back to the app.</span></p>
+    <a class="home" href="./" data-i18n="su_home">← BACK TO VERSEFLOW.APP</a>
   </div>
 </body>
 </html>
