@@ -96,7 +96,11 @@
   .qa{max-width:720px;margin:0 auto;}
   .qa .q{color:var(--text);font-size:13px;font-weight:700;margin:18px 0 6px;}
   .qa .a{color:var(--text2);font-size:12.5px;}
-  footer{border-top:1px solid var(--border);padding:26px 0;color:var(--muted);font-size:10px;letter-spacing:1.5px;text-align:center;}
+  footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);font-size:10px;letter-spacing:1.5px;text-align:center;}
+  footer .foot-links{margin-top:12px;letter-spacing:.5px;font-size:11px;}
+  footer .foot-links a{color:var(--text2);text-decoration:none;margin:0 4px;}
+  footer .foot-links a:hover{color:var(--mint);}
+  footer .foot-copy{margin-top:12px;font-size:10px;}
   .langsel { background:var(--elevated); color:var(--text2); border:1px solid var(--border-strong); border-radius:6px; padding:5px 8px; font-family:inherit; font-size:11px; letter-spacing:1px; cursor:pointer; }
   .langsel:hover { border-color:var(--mint); }
 </style>
@@ -184,7 +188,13 @@
   </section>
 </main>
 
-<footer data-i18n="pr_footer">VERSEFLOW · FREE OFFLINE · PRO $15 IN AFRICA · $20 INTERNATIONAL · PER MONTH</footer>
+<footer>
+  <div data-i18n="pr_footer">VERSEFLOW · FREE OFFLINE · PRO $15 IN AFRICA · $20 INTERNATIONAL · PER MONTH</div>
+  <div class="foot-links">
+    <a href="/" data-i18n="nav_home">Home</a> · <a href="pricing.html" data-i18n="nav_pricing">Pricing</a> · <a href="privacy.html" data-i18n="foot_privacy">Privacy Policy</a> · <a href="terms.html" data-i18n="foot_terms">Terms of Service</a> · <a href="mailto:wiseappsdev@gmail.com" data-i18n="foot_support">Support</a>
+  </div>
+  <div class="foot-copy">© 2026 VerseFlow · Wise Apps Dev</div>
+</footer>
 
 <script>
   // Subscription happens inside the app (Settings → Account → Upgrade), where

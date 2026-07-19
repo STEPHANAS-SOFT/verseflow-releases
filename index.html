@@ -272,6 +272,23 @@
   .langbar .flags{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
   .langbar .flag{ border:1px solid rgba(185,138,245,.4); color:var(--purple); border-radius:20px; padding:6px 14px; font-size:11px; letter-spacing:1px; cursor:pointer; background:none; font-family:inherit; }
   .langbar .flag:hover{ background:rgba(185,138,245,.1); }
+  .faq { border-top:1px solid var(--border); padding:72px 0; }
+  .faq .k { color:var(--purple); font-size:11px; letter-spacing:4px; text-align:center; }
+  .faq > h2 { text-align:center; font-size:clamp(24px,4vw,34px); font-weight:700; letter-spacing:-.5px; margin:12px 0 34px; }
+  .faq-list { max-width:760px; margin:0 auto; }
+  .faq-item { border-top:1px solid var(--border); padding:20px 4px; }
+  .faq-item:first-child { border-top:none; }
+  .faq-item h3 { font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif; font-size:15px; font-weight:700; margin-bottom:8px; color:var(--text); }
+  .faq-item p { color:var(--text2); font-size:13.5px; line-height:1.62; }
+  .site-foot { border-top:1px solid var(--border); padding:44px 0 30px; }
+  .site-foot .wrap { display:flex; flex-wrap:wrap; gap:24px 40px; align-items:flex-start; justify-content:space-between; }
+  .site-foot .brandcol { max-width:320px; }
+  .site-foot .brandcol .fb { letter-spacing:3px; font-weight:800; font-size:14px; color:var(--text); }
+  .site-foot .brandcol p { color:var(--muted); font-size:11.5px; margin-top:10px; line-height:1.6; }
+  .site-foot .col h4 { color:var(--text2); font-size:10px; letter-spacing:2px; margin-bottom:12px; text-transform:uppercase; }
+  .site-foot .col a { display:block; color:var(--text2); text-decoration:none; font-size:12px; margin:7px 0; }
+  .site-foot .col a:hover { color:var(--mint); }
+  .site-foot .copy { border-top:1px solid var(--border); margin-top:30px; padding-top:20px; color:var(--muted); font-size:10.5px; letter-spacing:1px; text-align:center; }
 </style>
 <script src="i18n.js" defer></script>
 </head>
@@ -308,8 +325,6 @@
       </a>
     </div>
     <div class="note" data-i18n="note_latest">ALWAYS THE LATEST VERSION · THE APP UPDATES ITSELF AFTERWARDS</div>
-    <div class="note" data-i18n="note_mac_damaged">MACOS: IF IT SAYS “DAMAGED”, OPEN TERMINAL AND RUN THIS ONCE, THEN OPEN THE APP:</div>
-    <div class="maccmd" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText('xattr -cr /Applications/VerseFlow.app')" title="Click to copy">xattr -cr /Applications/VerseFlow.app</div>
 
     <div class="demo" aria-hidden="true">
       <div class="demo-console">
@@ -454,9 +469,49 @@
       <li data-i18n="req5">For OBS output: the free DistroAV (obs-ndi) plugin on the receiving machine</li>
     </ul>
   </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="k" data-i18n="faq_k">QUESTIONS</div>
+    <h2 class="sans" data-i18n="faq_h">Frequently asked questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3 data-i18n="faq_q1">What does VerseFlow actually do?</h3><p data-i18n="faq_a1">It listens to your whole service and puts the words on screen automatically.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q2">Do I need an internet connection?</h3><p data-i18n="faq_a2">No. The free tier runs fully offline.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q3">Is my audio recorded or stored?</h3><p data-i18n="faq_a3">No. Audio is transcribed in real time and discarded.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q4">How accurate is the detection?</h3><p data-i18n="faq_a4">Spoken references are checked against the real Bible.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q5">What do I need to run it?</h3><p data-i18n="faq_a5">A Windows 10/11 or macOS 11+ computer and a microphone.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q6">Can it display our worship songs?</h3><p data-i18n="faq_a6">Yes — it recognises songs as they're sung.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q7">How much does it cost?</h3><p data-i18n="faq_a7">Free forever offline. Pro is a monthly subscription.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq_q8">Which languages does it support?</h3><p data-i18n="faq_a8">English, Spanish, French, German, Italian and Portuguese.</p></div>
+    </div>
+  </section>
 </main>
 
-<footer>VERSEFLOW <span class="v">v1.2.0</span> · SCRIPTURE &amp; LYRICS FOR CHURCH MEDIA TEAMS · THE APP UPDATES ITSELF</footer>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="brandcol">
+      <div class="fb">VERSEFLOW</div>
+      <p data-i18n="foot_rights">Scripture &amp; lyrics for church media teams.</p>
+    </div>
+    <div class="col">
+      <h4 data-i18n="foot_product">Product</h4>
+      <a href="/" data-i18n="nav_home">Home</a>
+      <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="#faq" data-i18n="foot_faq">FAQ</a>
+      <a href="#download" data-i18n="nav_download">Download</a>
+    </div>
+    <div class="col">
+      <h4 data-i18n="foot_legal">Legal</h4>
+      <a href="privacy.html" data-i18n="foot_privacy">Privacy Policy</a>
+      <a href="terms.html" data-i18n="foot_terms">Terms of Service</a>
+    </div>
+    <div class="col">
+      <h4 data-i18n="foot_support">Support</h4>
+      <a href="mailto:wiseappsdev@gmail.com">wiseappsdev@gmail.com</a>
+    </div>
+  </div>
+  <div class="copy">© 2026 VerseFlow · Wise Apps Dev</div>
+</footer>
 <script>
 (function(){
   var T=document.getElementById('demoTranscript'), D=document.getElementById('demoDetect'),
