@@ -61,25 +61,25 @@
   <h2>1. Information we handle</h2>
 
   <h3>Account information</h3>
-  <p>When you create a free VerseFlow account you provide an <strong>email address</strong> and password, or you sign in with Google (in which case Google shares your email address, name and profile picture with us). Authentication is handled by Google Firebase Authentication. We do not see or store your Google password.</p>
+  <p>When you create a free VerseFlow account you provide an <strong>email address</strong> and password, or you sign in with Google (in which case Google shares your email address, name and profile picture with us). Sign-in is handled securely through a trusted third-party authentication provider; we never see or store your password.</p>
 
   <h3>Audio</h3>
   <p>VerseFlow listens to your microphone or audio feed to detect Bible verses and songs. <strong>Audio is processed in real time to produce text and is then discarded. We do not record, save, or retain your audio.</strong></p>
   <ul>
     <li><strong>Offline mode (Free):</strong> transcription and detection run entirely on your own computer. No audio or text leaves the device.</li>
-    <li><strong>Cloud mode (Pro):</strong> audio is streamed over an encrypted connection to our transcription providers (AssemblyAI and/or OpenAI) purely to convert speech to text in the moment. It is not stored by us. Those providers process it under their own privacy and data-retention terms.</li>
+    <li><strong>Cloud mode (Pro):</strong> audio is streamed over an encrypted connection to a specialist third-party transcription service purely to convert speech to text in the moment. It is not stored by us, and it is processed under that provider's own privacy and data-retention terms.</li>
   </ul>
 
   <h3>Song identification</h3>
-  <p>When you use online song lookup, the song title, artist, and/or a short recognised lyric fragment may be sent to our lyrics source (lrclib.net) and to OpenAI to identify the song. No audio recording is sent.</p>
+  <p>When you use online song lookup, the song title, artist, and/or a short recognised lyric fragment may be sent to third-party lyric and AI services to identify the song. No audio recording is sent.</p>
 
   <h3>Payment information</h3>
-  <p>Pro subscriptions are processed by <strong>Paystack</strong> (Africa) or <strong>Lemon Squeezy</strong> (international). Your card or payment details are entered on their secure checkout and handled by them — <strong>we never see or store your card number.</strong> We receive and store your subscription status: your account ID, billing email, plan, renewal/expiry date, payment provider, and a subscription reference.</p>
+  <p>Pro subscriptions are processed by a trusted third-party payment provider, chosen to suit your region. Your card or payment details are entered on the provider's secure checkout and handled by them — <strong>we never see or store your card number.</strong> We receive and store your subscription status: your account ID, billing email, plan, renewal/expiry date, and a subscription reference.</p>
 
   <h3>Device and usage information</h3>
   <ul>
     <li>A random <strong>installation ID</strong> generated on your device, used to enforce the "one active device per Pro account" limit and to prevent abuse.</li>
-    <li>For cloud features, we log basic <strong>usage events</strong> (which cloud request was made and when) and an <strong>approximate country</strong> derived from your IP address (via ip-api.com), so we can operate the service and manage costs. We do not build advertising profiles.</li>
+    <li>For cloud features, we log basic <strong>usage events</strong> (which cloud request was made and when) and an <strong>approximate country</strong> derived from your IP address, so we can operate the service and manage costs. We do not build advertising profiles.</li>
   </ul>
 
   <h3>Support requests</h3>
@@ -96,19 +96,16 @@
   </ul>
 
   <h2>3. Third-party services</h2>
-  <p>We rely on a small set of processors. Each handles your data only for the purpose shown and under its own privacy policy:</p>
-  <table>
-    <tr><th>Service</th><th>Purpose</th></tr>
-    <tr><td>Google Firebase</td><td>Account sign-in and authentication</td></tr>
-    <tr><td>AssemblyAI</td><td>Real-time speech-to-text (Pro cloud)</td></tr>
-    <tr><td>OpenAI</td><td>Speech-to-text and AI verse/song detection (Pro cloud)</td></tr>
-    <tr><td>Paystack</td><td>Payment processing (Africa)</td></tr>
-    <tr><td>Lemon Squeezy</td><td>Payment processing (international)</td></tr>
-    <tr><td>lrclib.net</td><td>Public song-lyric lookup</td></tr>
-    <tr><td>ip-api.com</td><td>Approximate country from IP, for analytics</td></tr>
-    <tr><td>Vercel · GitHub</td><td>Website hosting · app download hosting</td></tr>
-  </table>
-  <p>We do not sell your personal information, and we do not share it with third parties for their own marketing.</p>
+  <p>To operate VerseFlow, we rely on a small number of carefully chosen third-party providers. They support functions such as:</p>
+  <ul>
+    <li>signing you in and securing your account;</li>
+    <li>converting speech to text and performing AI verse and song detection (Pro cloud features);</li>
+    <li>processing subscription payments securely;</li>
+    <li>looking up public song information;</li>
+    <li>approximate, IP-based location for basic analytics; and</li>
+    <li>hosting our website and app downloads.</li>
+  </ul>
+  <p>These providers act as our processors: they handle your information only as needed to perform their specific function for us, under their own privacy, security and data-protection commitments, and are not permitted to use it for their own purposes. <strong>We do not sell your personal information, and we do not share it with third parties for their own marketing.</strong> If you would like more detail about the providers we use, contact us at <a href="mailto:wiseappsdev@gmail.com">wiseappsdev@gmail.com</a>.</p>
 
   <h2>4. Data retention</h2>
   <ul>
